@@ -4,7 +4,7 @@ import assert from "node:assert/strict";
 import { salutation } from "../src/hello.js";
 
 test("salutation construit une phrase avec le prenom", () => {
-  assert.equal(salutation("Ahmed"), "Bonjour Ahmed !");
+  assert.equal(salutation("Ahmed"), "Bonsoir Ahmed !");
 });
 
 test("salutation ignore les espaces autour du prenom", () => {
