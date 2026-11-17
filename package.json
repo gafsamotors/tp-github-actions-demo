@@ -1,0 +1,15 @@
+{
+  "name": "hello-actions",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Projet minimal pour le TP GitHub Actions - ISET Gafsa",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test",
+    "test:unit": "node --test test/hello.test.js",
+    "test:integration": "node --test test/api.test.js",
+    "test:smoke": "node --test test/smoke.test.js",
+    "test:junit": "node scripts/junit.mjs"
+  }
+}

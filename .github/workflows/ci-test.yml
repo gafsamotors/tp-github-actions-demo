@@ -1,0 +1,44 @@
+name: CI tests
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Tests automatises
+    runs-on: ubuntu-latest
+    steps:
+      - name: Recuperer le code
+        uses: actions/checkout@v7
+
+      - name: Installer Node 22
+        uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Installer les dependances
+        run: npm ci
+
+      - name: Tests unitaires
+        run: npm run test:unit
+
+      - name: Tests d integration
+        run: npm run test:integration
+
+      - name: Tests de fumee
+        run: npm run test:smoke
+
+      - name: Produire le rapport JUnit
+        run: npm run test:junit
+
+      - name: Publier le rapport
+        uses: actions/upload-artifact@v7
+        with:
+          name: rapport-junit
+          path: resultats/junit.xml
